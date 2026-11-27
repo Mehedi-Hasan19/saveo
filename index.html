@@ -2,11 +2,11 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#000000"><link rel="icon" id="fav" type="image/png"><link rel="apple-touch-icon" id="fav2">
 <title>SAVEO</title>
 <style>
-:root{--ease:cubic-bezier(.34,1.56,.64,1);--out:cubic-bezier(.22,1,.36,1);--bf:blur(18px) saturate(140%);--bf2:blur(5px);--g1:#30d158;--g2:#ffd60a;--g3:#ff453a;
+:root{--ease:cubic-bezier(.34,1.56,.64,1);--out:cubic-bezier(.22,1,.36,1);--out2:cubic-bezier(.16,1,.3,1);--bf:blur(18px) saturate(140%);--bf2:blur(5px);--g1:#30d158;--g2:#ffd60a;--g3:#ff453a;
 --sat:0px;--sab:env(safe-area-inset-bottom,0px)}
 [data-theme=dark]{--bg:#000;--tx:#fff;--mu:rgba(255,255,255,.58);--gl:rgba(255,255,255,.07);--gb:rgba(255,255,255,.18);--hi:rgba(255,255,255,.4);--sh:rgba(0,0,0,.6);--b1:#fff;--b2:#8a8a8a;--b3:#4a4a4a;--in:rgba(255,255,255,.09);--pri:#fff;--prit:#000;--hbg:rgba(0,0,0,.5);--pill:rgba(255,255,255,.17);--menu:#18181a;--gls:rgba(30,30,32,.92)}
 [data-theme=light]{--bg:#f2f2f4;--tx:#0a0a0a;--mu:rgba(0,0,0,.55);--gl:rgba(255,255,255,.55);--gb:rgba(255,255,255,.9);--hi:#fff;--sh:rgba(0,0,0,.16);--b1:#fff;--b2:#c4c4c8;--b3:#8e8e93;--in:rgba(0,0,0,.06);--pri:#000;--prit:#fff;--hbg:rgba(242,242,244,.62);--pill:rgba(255,255,255,.95);--menu:#fff;--gls:rgba(250,250,252,.92)}
@@ -30,9 +30,10 @@ header small{display:block;color:var(--mu);font-size:12.5px;font-weight:600}
 .hbtns{display:flex;gap:10px;align-items:center}.pillb{height:42px;padding:0 16px;border-radius:21px;font-weight:800;font-size:13.5px}
 .ib,.pillb{transition:transform .35s var(--ease),background .25s}
 main{position:relative;z-index:1;height:100%}
-.tab{position:absolute;inset:0;overflow-y:auto;contain:layout;touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:calc(var(--hh,76px) + 14px) 16px calc(110px + 64px + var(--sab));opacity:0;visibility:hidden;pointer-events:none;transform:translateX(18px);transition:opacity .16s ease,transform .3s var(--out),visibility 0s .3s}
-.tab.pre{transform:translateX(-18px)}
-.tab.on{opacity:1;visibility:inherit;pointer-events:auto;transform:none;transition:opacity .3s ease .08s,transform .5s var(--out) .04s,visibility 0s}
+.tab{position:absolute;inset:0;overflow-y:auto;contain:layout;touch-action:pan-y;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:calc(var(--hh,76px) + 14px) 16px calc(110px + 64px + var(--sab));opacity:0;visibility:hidden;pointer-events:none;transform:translate3d(26px,0,0);transition:opacity .16s ease,transform .34s var(--out2),visibility 0s .34s}
+.tab.pre{transform:translate3d(-26px,0,0)}
+.tab.mv{will-change:transform,opacity}
+.tab.on{opacity:1;visibility:inherit;pointer-events:auto;transform:none;transition:opacity .36s ease .07s,transform .6s var(--out2) .02s,visibility 0s}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}}
 .fi2{animation:fi2 .28s var(--out) both}@keyframes fi2{from{opacity:0;transform:translateY(6px)}}
 .card{padding:18px;margin-bottom:14px}
@@ -96,7 +97,7 @@ nav button.on{color:var(--tx)}
 .fab:active{transform:scale(.88) rotate(90deg)}
 .wrap{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.4);backdrop-filter:var(--bf2);-webkit-backdrop-filter:var(--bf2);display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .3s}
 .wrap.on{opacity:1;pointer-events:auto}
-.sheet{width:100%;max-height:92%;overflow-y:auto;padding:20px 18px calc(var(--sab) + 20px);border-radius:32px 32px 0 0;transform:translateY(105%);transition:transform .5s var(--out)}
+.sheet{width:100%;max-height:92%;overflow-y:auto;padding:20px 18px calc(var(--sab) + 20px);border-radius:32px 32px 0 0;transform:translateY(105%);transition:transform .55s var(--out2)}
 .wrap.on .sheet{transform:none}
 .sheet .big{text-align:center}
 .amt{width:100%!important;font-size:clamp(24px,9vw,34px);line-height:1.25;font-weight:800;text-align:center!important;background:transparent!important;border:0!important;padding:4px}
@@ -128,7 +129,7 @@ nav button.on{color:var(--tx)}
 #aSeg{margin-bottom:2px}
 .acard .fine{margin:16px 0 0;font-size:12px;font-weight:500}
 .lb{display:block;font-size:12.5px;font-weight:700;color:var(--mu);margin:14px 0 6px}
-input.fi{width:100%;text-align:left;background:var(--in);border:1px solid var(--gb);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;color:var(--tx);transition:border-color .15s,box-shadow .15s}
+input.fi,textarea.fi{width:100%;text-align:left;background:var(--in);border:1px solid var(--gb);border-radius:14px;padding:13px 14px;font-size:16px;outline:0;color:var(--tx);transition:border-color .15s,box-shadow .15s}
 .fi:focus{border-color:var(--tx);box-shadow:0 0 0 4px var(--in)}
 .pw{position:relative}.pw input.fi{padding-right:68px}
 .eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:12.5px;font-weight:800;color:var(--mu);padding:8px 10px}
@@ -142,7 +143,7 @@ input.fi{width:100%;text-align:left;background:var(--in);border:1px solid var(--
 .sbtn{width:100%;margin-top:4px;padding:15px}
 .shake{animation:shake .42s}@keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 .wrap.ctr{align-items:center;justify-content:center;padding:22px}
-.dlg{width:100%;max-width:360px;padding:24px 20px;opacity:0;transform:translateY(26px) scale(.9);transition:transform .5s var(--out),opacity .25s}
+.dlg{width:100%;max-width:360px;padding:24px 20px;opacity:0;transform:translateY(26px) scale(.9);transition:transform .55s var(--out2),opacity .25s}
 .wrap.on .dlg{opacity:1;transform:none}
 .dd{position:relative}
 .ddb{display:flex;gap:10px;align-items:center;justify-content:space-between;min-width:112px;background:var(--in);border:1px solid var(--gb);border-radius:13px;padding:10px 12px;font-weight:700;transition:transform .3s var(--ease)}
@@ -198,6 +199,15 @@ html.lite{--bf:none;--bf2:none}
 html.lite .glass,html.lite header{background:var(--gls)}
 html.lite .mesh i{animation:none;transform:none}
 html{overscroll-behavior:none;-webkit-text-size-adjust:100%}body{touch-action:manipulation}
+/* v2: recovery, forgot password, dialogs, nav micro-motion */
+.btn.pri.dng{background:var(--g3);color:#fff}
+.code{font:800 clamp(20px,6.4vw,26px)/1.25 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.08em;text-align:center;background:var(--in);border:1px solid var(--gb);border-radius:14px;padding:14px 8px;user-select:all;-webkit-user-select:all;overflow-wrap:anywhere}
+.fp{display:flex;justify-content:flex-end;margin-top:2px}
+.link2{font-size:12.5px;font-weight:700;color:var(--mu);padding:6px 2px;transition:color .15s}.link2:active{color:var(--tx)}
+.acard .hint{text-align:left;margin:6px 2px 0;font-size:12px}
+textarea.fi{resize:none;font:12px/1.45 ui-monospace,Menlo,Consolas,monospace}
+nav button span{transition:transform .4s var(--ease)}nav button.on span{transform:translateY(-2px) scale(1.12)}
+.wrap:not(.ctr) .sheet{overscroll-behavior:contain}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01s!important}}
 </style>
 </head>
@@ -256,6 +266,9 @@ html{overscroll-behavior:none;-webkit-text-size-adjust:100%}body{touch-action:ma
   <div class="pw"><input class="fi" id="pfNew2" type="password" autocomplete="new-password" placeholder="Confirm new password"><button type="button" class="eye" data-eye="pfNew2"></button></div>
   <div class="msg" id="pfPm"></div>
   <button class="btn pri" id="pfSaveP">Update password</button>
+  <label class="lb" style="margin-top:20px">Recovery code</label>
+  <div class="mu" id="pfRc" style="text-align:left;margin:0"></div>
+  <button class="btn" id="pfRcBtn">Create new recovery code</button>
  </div></div>
 <div class="wrap" id="cuWrap"><div class="sheet glass">
   <div class="shh"><h3>Customize</h3><button class="btn" style="padding:8px 16px" data-close="cuWrap">Done</button></div>
@@ -263,6 +276,26 @@ html{overscroll-behavior:none;-webkit-text-size-adjust:100%}body{touch-action:ma
   <div class="lb">Accent color</div><div class="accs" id="cuAcc"></div>
   <div class="lb">Dashboard widgets — show, hide, reorder</div><div id="cuW"></div>
   <button class="btn" id="cuReset" style="margin-top:6px;width:100%">Reset layout</button>
+ </div></div>
+<div class="wrap ctr" id="cfWrap"><div class="dlg glass" role="dialog" aria-modal="true" aria-labelledby="cfT">
+  <div class="logo img" style="width:60px;height:60px;border-radius:16px"><img data-ico alt=""></div>
+  <h2 id="cfT"></h2><p class="mu" id="cfTx"></p>
+  <div id="cfPwRow" style="display:none"><div class="pw"><input class="fi" id="cfPw" type="password" autocomplete="current-password" placeholder="Password"><button type="button" class="eye" data-eye="cfPw"></button></div><div class="msg" id="cfErr"></div></div>
+  <div class="btns" style="margin-top:16px"><button class="btn" id="cfNo" type="button">Cancel</button><button class="btn pri ld" id="cfYes" type="button"><span class="lbl">OK</span><i class="spin"></i></button></div>
+ </div></div>
+<div class="wrap ctr" id="rcWrap" data-lock="1"><div class="dlg glass" role="dialog" aria-modal="true" aria-labelledby="rcT">
+  <div class="logo img" style="width:60px;height:60px;border-radius:16px"><img data-ico alt=""></div>
+  <h2 id="rcT">Your recovery code</h2>
+  <p class="mu">Write this code down. You will need it if you ever forget your password. It is shown only once.</p>
+  <div class="code" id="rcCode"></div>
+  <div class="btns" style="margin-top:16px"><button class="btn" id="rcCopy" type="button">Copy</button><button class="btn pri ld" id="rcOk" type="button"><span class="lbl">I saved it</span><i class="spin"></i></button></div>
+ </div></div>
+<div class="wrap" id="bkWrap"><div class="sheet glass">
+  <div class="shh"><h3 id="bkT">Backup</h3><button class="btn" style="padding:8px 16px" data-close="bkWrap">Done</button></div>
+  <p class="mu" id="bkTx" style="text-align:left;margin:0 0 8px"></p>
+  <textarea id="bkTa" class="fi" rows="7" spellcheck="false" autocapitalize="none" autocomplete="off"></textarea>
+  <div class="msg" id="bkMsg"></div>
+  <div class="btns" style="margin-top:8px"><button class="btn" id="bkCopy" type="button">Copy</button><button class="btn" id="bkFile" type="button">Choose file</button><button class="btn pri" id="bkImp" type="button">Import</button></div>
  </div></div>
 <div class="wrap ctr" id="loWrap">
  <div class="dlg glass" id="loDlg" role="dialog" aria-modal="true" aria-labelledby="loT">
@@ -287,11 +320,11 @@ const DEF={tx:[],cats:{save:['Salary','Pocket money','Gift','Other'],exp:['Food'
  ui:{accent:'mono',widgets:WIDS.map(id=>({id,on:true}))},
  quick:[{id:'q1',label:'Save ৳100',type:'save',amt:100,cat:'Pocket money'},{id:'q2',label:'Tea',type:'exp',amt:20,cat:'Food'},{id:'q3',label:'Bus fare',type:'exp',amt:30,cat:'Transport'}]};
 const NUM=['target','minEntry','limit','interval'];
-let S=merge(null),tab='dash',per='today',flt='all',qry='',editId=null,sort='new',catf='all',qedit=false,pm=false,gdraft={},histLim=60,qT,mt='exp',mc='',lastFire=Date.now(),bannerHidden=false,actx=null,toastT,schT,animT,anim=true,lastOff={},lastCol={},lastW={};
+let S=merge(null),tab='dash',per='today',flt='all',qry='',editId=null,sort='new',catf='all',qedit=false,pm=false,gdraft={},histLim=60,qT,mvT,frozen=false,fpFail=0,fpLock=0,rcPending=null,cf=null,hiddenAt=0,schGen=0,mt='exp',mc='',lastFire=Date.now(),bannerHidden=false,actx=null,toastT,schT,animT,anim=true,lastOff={},lastCol={},lastW={};
 const TABS=['dash','hist','set'];
 
 function read(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
-function save(){if(!KEY)return;try{LS.set(KEY,JSON.stringify(S))}catch(e){toast('Storage is full or blocked',1)}}
+function save(){if(!KEY||frozen)return;try{LS.set(KEY,JSON.stringify(S))}catch(e){toast('Storage is full or blocked',1)}}
 function persist(){save();clearTimeout(schT);schT=setTimeout(()=>{schT=0;schedule()},700)}
 function mergeUI(u){
   const out=[],seen=new Set();
@@ -327,7 +360,7 @@ const day=s=>{const t=T();return s===t?'Today':s===addDays(t,-1)?'Yesterday':new
 /* ---------- derived numbers ---------- */
 const todaySave=()=>sum('save',t=>t.date===T());
 const todayExp=()=>sum('exp',t=>t.date===T());
-const need=()=>{const goal=S.set.minEntry>0?S.set.minEntry:S.set.target;return Math.max(0,goal-todaySave())};
+const need=()=>{const goal=S.set.minEntry>0?S.set.minEntry:S.set.target;return Math.max(0,Math.round((goal-todaySave())*100)/100)};
 function streak(){
   const m={};S.tx.forEach(t=>{if(t.type==='save')m[t.date]=(m[t.date]||0)+t.amt});
   const g=S.set.target;if(g<=0)return 0;
@@ -353,10 +386,11 @@ function render(){
 function settle(){requestAnimationFrame(()=>requestAnimationFrame(()=>{$$('.bar[data-off]').forEach(b=>{b.style.strokeDashoffset=b.dataset.off;b.style.stroke=b.dataset.col});$$('[data-w]').forEach(i=>i.style.transform=`scaleX(${i.dataset.w/100})`);anim=false}))}
 function movePill(){const b=$('nav button.on'),p=$('#pill');if(!b)return;p.style.width=b.offsetWidth+'px';p.style.transform=`translateX(${b.offsetLeft}px)`}
 function go(){
-  const i=TABS.indexOf(tab);
+  const i=TABS.indexOf(tab),prev=$('.tab.on'),nx=$('#t-'+tab);
   $$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
   $$('.tab').forEach(t=>{const j=TABS.indexOf(t.id.slice(2));t.classList.toggle('on',j===i);t.classList.toggle('pre',j<i)});
-  anim=true;render();$('#t-'+tab).scrollTop=0;movePill();
+  [prev,nx].forEach(e=>e&&e.classList.add('mv'));clearTimeout(mvT);mvT=setTimeout(()=>$$('.tab.mv').forEach(e=>e.classList.remove('mv')),900);
+  anim=true;render();nx.scrollTop=0;movePill();syncTabLayer();
 }
 function catRows(){
   const month=t=>t.date.startsWith(T().slice(0,7)),cur=per==='today'?t=>t.date===T():month,by={};
@@ -450,7 +484,7 @@ function settings(){
   <div class="card glass"><div class="hd"><h2>Categories</h2></div>${cats('exp','Expense')}${cats('save','Savings / income')}</div>
   <div class="card glass"><div class="hd"><h2>Your data</h2></div><div class="mu" style="margin-bottom:10px">Everything stays on this device. Export a backup before clearing app data or reinstalling.</div>
    <div class="btns"><button class="btn" id="exp">Export JSON</button><button class="btn" id="cpy">Copy JSON</button><button class="btn" id="imp">Import JSON</button></div>
-   <div class="btns" style="margin-top:8px"><button class="btn dng" id="rst">Reset all data</button></div></div>`;
+   <div class="btns" style="margin-top:8px"><button class="btn dng" id="rst">Reset all data</button><button class="btn dng" id="delAcc">Delete account</button></div></div>`;
 }
 
 /* ---------- alerts ---------- */
@@ -497,7 +531,7 @@ let schBusy=false,schAgain=false;
 async function schedule(){
   if(!user||!isNative())return;
   if(schBusy){schAgain=true;return}
-  schBusy=true;
+  schBusy=true;const gen=schGen;
   try{
     const p=LN(),pend=await p.getPending(),old=(pend.notifications||[]).filter(n=>n.id<90000000).map(n=>({id:n.id}));
     if(old.length)await p.cancel({notifications:old});
@@ -517,7 +551,7 @@ async function schedule(){
           body:sl.end?'You have not logged anything today. Add your savings and expenses now.':(d===0?`Save ${fmt(need())} more today to reach your minimum.`:`Save at least ${fmt(goal)} today to keep your streak.`)});
       });
     }
-    if(list.length)await p.schedule({notifications:list});
+    if(list.length&&gen===schGen&&user)await p.schedule({notifications:list});
   }catch(e){}finally{schBusy=false;if(schAgain){schAgain=false;schedule()}}
 }
 
@@ -554,20 +588,44 @@ function saveTx(){
 }
 
 /* ---------- data ---------- */
-function exportJSON(){
-  const b=new Blob([JSON.stringify({app:'saveo',version:1,exported:new Date().toISOString(),...S},null,1)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`saveo-${T()}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000);toast('Backup exported');
+const backupJSON=pretty=>JSON.stringify({app:'saveo',version:1,exported:new Date().toISOString(),...S},null,pretty?1:0);
+const isWebView=()=>isNative()||/; wv\)|WebView/i.test(navigator.userAgent);
+async function copyText(t){
+  try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);return true}}catch(e){}
+  try{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,t.length);const ok=document.execCommand('copy');ta.remove();return ok}catch(e){return false}
 }
-function copyJSON(){
-  const txt=JSON.stringify({app:'saveo',version:1,...S});
-  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>toast('Backup copied to clipboard'),()=>toast('Copy blocked — use Export instead',1));
+function openBackup(mode,text){
+  const ex=mode==='export',ta=$('#bkTa');
+  $('#bkT').textContent=ex?'Backup text':'Import backup';
+  $('#bkTx').textContent=ex?'This device could not save or copy the file automatically. Copy this text and keep it somewhere safe.':'Paste a SAVEO backup below, or choose a backup file.';
+  ta.value=ex?text:'';ta.readOnly=ex;
+  $('#bkCopy').style.display=ex?'':'none';$('#bkFile').style.display=ex?'none':'';$('#bkImp').style.display=ex?'none':'';
+  msg('#bkMsg','');$('#bkWrap').classList.add('on');
+  if(ex)setTimeout(()=>{ta.focus();ta.select()},420);
 }
-function importJSON(f){
-  const r=new FileReader();
-  r.onload=()=>{try{const o=JSON.parse(r.result);if(!o||!Array.isArray(o.tx))throw 0;const n=merge(o);
-    if(!confirm(`Replace current data with ${n.tx.length} entries from this backup?`))return;
-    S=n;persist();render();toast('Backup imported')}catch(e){toast('That file is not a valid backup',1)}};
-  r.onerror=()=>toast('Could not read the file',1);r.readAsText(f);
+async function exportData(){
+  const json=backupJSON(true),name=`saveo-${T()}.json`;
+  try{const file=new File([json],name,{type:'application/json'});
+    if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'SAVEO backup'});toast('Backup shared');return}
+  }catch(e){if(e&&e.name==='AbortError')return}
+  const P=window.Capacitor&&window.Capacitor.Plugins;
+  if(isNative()&&P&&P.Filesystem&&P.Share){try{const r=await P.Filesystem.writeFile({path:name,data:json,directory:'CACHE',encoding:'utf8'});await P.Share.share({title:'SAVEO backup',url:r.uri});return}catch(e){}}
+  if(!isWebView()){
+    const b=new Blob([json],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),3000);toast('Backup exported');return;
+  }
+  openBackup('export',json);
+}
+async function copyBackup(){const j=backupJSON(false);if(await copyText(j))toast('Backup copied to clipboard');else openBackup('export',j)}
+async function applyImport(text){
+  let n;try{const o=JSON.parse(text);if(!o||!Array.isArray(o.tx))throw 0;n=merge(o)}catch(e){msg('#bkMsg','That is not a valid SAVEO backup.');toast('That is not a valid backup',1);return}
+  if(!(await ask({title:'Replace current data?',text:`This replaces your current data with ${n.tx.length} entries from the backup.`,ok:'Replace',danger:true})))return;
+  S=n;persist();render();$('#bkWrap').classList.remove('on');toast('Backup imported');
+}
+function importJSON(f){const r=new FileReader();r.onload=()=>applyImport(String(r.result));r.onerror=()=>toast('Could not read the file',1);r.readAsText(f)}
+async function resetData(){
+  if(!(await ask({title:'Reset all data?',text:'This deletes all entries and settings of this account. It cannot be undone.',ok:'Reset',danger:true})))return;
+  if(!(await ask({title:'Really reset everything?',text:'Export a backup first if you are not sure.',ok:'Yes, reset',danger:true})))return;
+  S=merge(null);persist();render();toast('All data reset');
 }
 
 /* ---------- toasts, profile, customize, quick actions ---------- */
@@ -592,7 +650,7 @@ function toast(m,bad,act){
 }
 function setUser(u){user=u;LS.set(USERS,JSON.stringify(getUsers().map(x=>x.email===u.email?u:x)));$('#avBtn').textContent=ini(u.name)}
 function openPf(){
-  if(!user)return;$('#pfAv').textContent=ini(user.name);$('#pfName').textContent=user.name;$('#pfMail').textContent=user.email;$('#pfN').value=user.name;
+  if(!user)return;$('#pfAv').textContent=ini(user.name);$('#pfName').textContent=user.name;$('#pfMail').textContent=user.email;$('#pfRc').textContent=user.rec?'A recovery code is set. Creating a new one replaces the old code.':'No recovery code yet. Create one so you can reset your password if you forget it.';$('#pfN').value=user.name;
   ['#pfNm','#pfPm'].forEach(i=>msg(i,''));['pfCur','pfNew','pfNew2'].forEach(i=>{$('#'+i).value='';$('#'+i).type='password'});
   $$('#pfWrap .eye').forEach(b=>b.innerHTML=EYE);$('#pfWrap').classList.add('on');
 }
@@ -603,7 +661,7 @@ function savePfName(){
 async function savePfPw(){
   const c=$('#pfCur').value,n=$('#pfNew').value,n2=$('#pfNew2').value;
   if(!c||!n||!n2){msg('#pfPm','Fill in all three password fields.');return}
-  if(await hashPw(c,user.salt)!==user.hash){msg('#pfPm','Current password is incorrect.');return}
+  if(!(await verifyPw(user,c))){msg('#pfPm','Current password is incorrect.');return}
   if(n.length<6){msg('#pfPm','New password needs 6+ characters.');return}
   if(n!==n2){msg('#pfPm','New passwords do not match.');return}
   if(n===c){msg('#pfPm','Choose a different password.');return}
@@ -639,18 +697,20 @@ const startLoops=()=>{if(!tickId)tickId=setInterval(tick,15000)};
 const stopLoops=()=>{clearInterval(tickId);tickId=0};
 const UIK=()=>'saveo.ui.'+(user?user.email:'');
 function saveUI(){
-  if(!user)return;const sc={};TABS.forEach(t=>{const e=$('#t-'+t);if(e)sc[t]=e.scrollTop});
+  if(!user||frozen)return;const sc={};TABS.forEach(t=>{const e=$('#t-'+t);if(e)sc[t]=e.scrollTop});
   const j=JSON.stringify({tab,per,flt,sort,catf,sc});if(j===lastUI)return;lastUI=j;try{LS.set(UIK(),j)}catch(e){}
 }
 function loadUI(){
   try{const o=JSON.parse(localStorage.getItem(UIK()));if(!o)return null;
-    if(TABS.includes(o.tab))tab=o.tab;if(o.per==='today'||o.per==='month')per=o.per;if(['all','save','exp'].includes(o.flt))flt=o.flt;
-    if(['new','old','high','low'].includes(o.sort))sort=o.sort;if(typeof o.catf==='string')catf=o.catf;return o.sc||null}catch(e){return null}
+    if(o.per==='today'||o.per==='month')per=o.per;if(['all','save','exp'].includes(o.flt))flt=o.flt;
+    if(['new','old','high','low'].includes(o.sort))sort=o.sort;if(typeof o.catf==='string')catf=o.catf;return null}catch(e){return null}
 }
+const AWAY_MS=120000;
+function goHome(){$$('.wrap.on').forEach(w=>{if(w.id!=='rcWrap')w.classList.remove('on')});if(tab!=='dash'){tab='dash';go()}else{const e=$('#t-dash');if(e)e.scrollTop=0}}
 function setActive(on){
   if(on===active)return;active=on;document.documentElement.classList.toggle('bg',!on);
-  if(!on){stopLoops();clearTimeout(qT);saveUI();if(schT){clearTimeout(schT);schT=0;schedule()}return}
-  if(!user)return;startLoops();tick();   // no re-render: the screen is exactly as it was left
+  if(!on){hiddenAt=Date.now();stopLoops();clearTimeout(qT);saveUI();if(schT){clearTimeout(schT);schT=0;schedule()}return}
+  if(!user)return;startLoops();if(Date.now()-hiddenAt>AWAY_MS)goHome();tick();   // no re-render: the screen is exactly as it was left
 }
 document.addEventListener('visibilitychange',()=>setActive(!document.hidden));
 window.addEventListener('pageshow',()=>setActive(!document.hidden));
@@ -671,7 +731,7 @@ function probePerf(){
   const step=t=>{
     if(document.hidden||(last&&t-last>400)){probing=false;return}
     if(!t0)t0=t;last=t;n++;
-    if(t-t0>=1500){probing=false;if(n*1000/(t-t0)<38){LS.set('saveo.autolite','1');applyPerf();toast('Smoother mode turned on for this device')}return}
+    if(t-t0>=1500){probing=false;const slow=n*1000/(t-t0)<38,c=+localStorage.getItem('saveo.slow')||0;if(slow){if(c+1>=2){LS.set('saveo.autolite','1');LS.del('saveo.slow');applyPerf();toast('Smoother mode is on. Change it in Settings > Visual quality.')}else LS.set('saveo.slow',String(c+1))}else if(c)LS.del('saveo.slow');return}
     requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
@@ -695,16 +755,62 @@ async function restore(){
 const USERS='saveo.users',SESS='saveo.session',DK='saveo.data.',segPos={};
 let authMode='login',busy=false,lob=false;
 const getUsers=()=>{try{const a=JSON.parse(localStorage.getItem(USERS));return Array.isArray(a)?a:[]}catch(e){return[]}};
-const findUser=m=>getUsers().find(u=>u.email===m);
+const canon=m=>{const p=m.split('@');return p[0].split('+')[0].replace(/\./g,'')+'@'+p[1]};
+const findUser=m=>{const us=getUsers();return us.find(u=>u.email===m)||us.find(u=>canon(u.email)===canon(m))};
 const isGmail=m=>/^[a-z0-9][a-z0-9._+-]*@gmail\.com$/.test(m);
+const isGmailNew=m=>{const l=(m.split('@')[0]||'').split('+')[0];return /^[a-z0-9.]{6,30}$/.test(l)&&!/^\.|\.$|\.\./.test(l)};
 const mailText=v=>!v?'Enter your Gmail address.':v.includes('@')&&!v.endsWith('@gmail.com')?'Only @gmail.com addresses are allowed.':'Enter a valid Gmail, e.g. name@gmail.com';
 const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-async function hashPw(pw,salt){
-  try{const k=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveBits']);
-    return'p1:'+hex(await crypto.subtle.deriveBits({name:'PBKDF2',salt:new TextEncoder().encode(salt),iterations:100000,hash:'SHA-256'},k,256))}
-  catch(e){let h=2166136261;const t=salt+pw;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}return'f1:'+(h>>>0).toString(16)}
+const K256=new Uint32Array([0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2]);
+const IV=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19],Wb=new Uint32Array(64);
+function shaBlock(H,m,o){
+  for(let i=0;i<16;i++)Wb[i]=m[o+i];
+  for(let i=16;i<64;i++){const a=Wb[i-15],b=Wb[i-2];Wb[i]=(Wb[i-16]+(((a>>>7)|(a<<25))^((a>>>18)|(a<<14))^(a>>>3))+Wb[i-7]+(((b>>>17)|(b<<15))^((b>>>19)|(b<<13))^(b>>>10)))|0}
+  let a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+  for(let i=0;i<64;i++){
+    const t1=(h+(((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7)))+((e&f)^(~e&g))+K256[i]+Wb[i])|0;
+    const t2=((((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)))+((a&b)^(a&c)^(b&c)))|0;
+    h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0;
+  }
+  H[0]+=a;H[1]+=b;H[2]+=c;H[3]+=d;H[4]+=e;H[5]+=f;H[6]+=g;H[7]+=h;
 }
+function shaBytes(H,bytes,prefix){
+  const len=bytes.length,total=((len+9+63)>>6)<<6,buf=new Uint8Array(total);buf.set(bytes);buf[len]=0x80;
+  const bits=(len+prefix)*8,dv=new DataView(buf.buffer);dv.setUint32(total-8,Math.floor(bits/4294967296));dv.setUint32(total-4,bits>>>0);
+  const w=new Uint32Array(total/4);for(let i=0;i<w.length;i++)w[i]=dv.getUint32(i*4);
+  for(let o=0;o<w.length;o+=16)shaBlock(H,w,o);
+  const out=new Uint8Array(32),ov=new DataView(out.buffer);for(let i=0;i<8;i++)ov.setUint32(i*4,H[i]);return out;
+}
+const sha256=b=>shaBytes(new Uint32Array(IV),b,0);
+function pbkdf2Js(pw,salt,iter){
+  const key=pw.length>64?sha256(pw):pw,kb=new Uint8Array(64);kb.set(key);
+  const iw=new Uint32Array(16),ow=new Uint32Array(16);
+  for(let i=0;i<16;i++){const o=i*4;iw[i]=((kb[o]^54)<<24|(kb[o+1]^54)<<16|(kb[o+2]^54)<<8|(kb[o+3]^54))>>>0;ow[i]=((kb[o]^92)<<24|(kb[o+1]^92)<<16|(kb[o+2]^92)<<8|(kb[o+3]^92))>>>0}
+  const iH=new Uint32Array(IV),oH=new Uint32Array(IV);shaBlock(iH,iw,0);shaBlock(oH,ow,0);
+  const s1=new Uint8Array(salt.length+4);s1.set(salt);s1[salt.length+3]=1;
+  const d=shaBytes(new Uint32Array(oH),shaBytes(new Uint32Array(iH),s1,64),64),dv=new DataView(d.buffer);
+  let U=new Uint32Array(8),N=new Uint32Array(8);const Tw=new Uint32Array(8),blk=new Uint32Array(16),H1=new Uint32Array(8);
+  for(let i=0;i<8;i++){U[i]=dv.getUint32(i*4);Tw[i]=U[i]}
+  blk[8]=0x80000000;blk[15]=768;
+  for(let it=1;it<iter;it++){
+    H1.set(iH);blk.set(U);shaBlock(H1,blk,0);
+    blk.set(H1);N.set(oH);shaBlock(N,blk,0);
+    for(let j=0;j<8;j++)Tw[j]^=N[j];
+    const t=U;U=N;N=t;
+  }
+  const out=new Uint8Array(32),ov=new DataView(out.buffer);for(let i=0;i<8;i++)ov.setUint32(i*4,Tw[i]);return hex(out);
+}
+async function pbkdf(pw,salt,iter){
+  const enc=new TextEncoder();
+  try{const k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits']);return hex(await crypto.subtle.deriveBits({name:'PBKDF2',salt:enc.encode(salt),iterations:iter,hash:'SHA-256'},k,256))}
+  catch(e){await sleep(30);return pbkdf2Js(enc.encode(pw),enc.encode(salt),iter)}
+}
+const hashPw=async(pw,salt)=>'p1:'+await pbkdf(pw,salt,100000);
+const normCode=c=>String(c).toUpperCase().replace(/[^A-Z0-9]/g,'');
+const hashRec=async(code,salt)=>'r1:'+await pbkdf(normCode(code),salt,20000);
+function legacyF1(pw,salt){let h=2166136261;const t=salt+pw;for(let i=0;i<t.length;i++){h^=t.charCodeAt(i);h=Math.imul(h,16777619)}return'f1:'+(h>>>0).toString(16)}
+async function verifyPw(u,pw){return u.hash&&u.hash.startsWith('f1:')?legacyF1(pw,u.salt)===u.hash:(await hashPw(pw,u.salt))===u.hash}
 const fade=el=>{if(!el)return;el.classList.remove('fi2');void el.offsetWidth;el.classList.add('fi2')};
 function msg(id,t){const e=$(id);if(!e)return;if(t){e.textContent=t;e.classList.add('on')}else e.classList.remove('on')}
 function showErr(t,label,fn){const e=$('#aErr');e.textContent=t+' ';if(label){const b=document.createElement('button');b.type='button';b.textContent=label;b.onclick=fn;e.appendChild(b)}e.classList.add('on')}
@@ -725,20 +831,26 @@ function savedHtml(su){
   return!su&&u.length?`<div class="lb">Saved accounts · tap to pick</div><div class="chips" id="aSaved">${u.map(x=>`<button type="button" class="chip ${x.email===last?'on':''}" data-pick="${esc(x.email)}"><span class="av xs">${esc(ini(x.name))}</span>${esc(x.name.split(' ')[0])}</button>`).join('')}</div>`:'';
 }
 function authHtml(m){
-  const su=m==='signup';
-  return`<h2>${su?'Create your account':'Welcome back'}</h2><p class="mu">${su?'Sign up with your Gmail to start saving':'Log in with your Gmail to continue'}</p>
-<form id="aForm" novalidate>${su?`<label class="lb" for="aName">Name</label><input class="fi" id="aName" type="text" autocomplete="name" placeholder="Your name" maxlength="40"><div class="msg" id="nameMsg"></div>`:''}
+  const su=m==='signup',fg=m==='forgot';
+  const hd=fg?['Reset your password','Use your recovery code to set a new password']:su?['Create your account','Sign up with your Gmail to start saving']:['Welcome back','Log in with your Gmail to continue'];
+  const nameF=su?`<label class="lb" for="aName">Name</label><input class="fi" id="aName" type="text" autocomplete="name" placeholder="Your name" maxlength="40"><div class="msg" id="nameMsg"></div>`:'';
+  const pwF=fg?`<label class="lb" for="aCode">Recovery code</label><input class="fi" id="aCode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX"><div class="mu hint">Older account without a code? Type your account name here.</div><div class="msg" id="codeMsg"></div>
+<label class="lb" for="aPw">New password</label>${pwField('aPw','At least 6 characters','new-password')}<div class="msg" id="pwMsg"></div>
+<label class="lb" for="aPw2">Confirm new password</label>${pwField('aPw2','Repeat the new password','new-password')}<div class="msg" id="pw2Msg"></div>`
+   :`<label class="lb" for="aPw">Password</label>${pwField('aPw',su?'At least 6 characters':'Your password',su?'new-password':'current-password')}${su?'':'<div class="fp"><button type="button" class="link2" data-forgot>Forgot password?</button></div>'}<div class="msg" id="pwMsg"></div>`;
+  return`<h2>${hd[0]}</h2><p class="mu">${hd[1]}</p>
+<form id="aForm" novalidate>${nameF}
 <label class="lb" for="aMail">Gmail</label><input class="fi" id="aMail" type="email" inputmode="email" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="you@gmail.com" value="${su?'':esc(lastMail())}"><div class="msg" id="mailMsg"></div>
-<label class="lb" for="aPw">Password</label>${pwField('aPw',su?'At least 6 characters':'Your password',su?'new-password':'current-password')}<div class="msg" id="pwMsg"></div>
+${pwF}
 <div class="msg" id="aErr"></div>
-<button class="btn pri sbtn ld" id="aGo" type="submit"><span class="lbl">${su?'Create account':'Log in'}</span><i class="spin"></i></button></form>`;
+<button class="btn pri sbtn ld" id="aGo" type="submit"><span class="lbl">${fg?'Reset password':su?'Create account':'Log in'}</span><i class="spin"></i></button></form>`;
 }
 const syncSaved=()=>{const m=$('#aMail');if(m)$$('#aSaved .chip').forEach(c=>c.classList.toggle('on',c.dataset.pick===m.value.trim().toLowerCase()))};
 let swT;
 function setMode(m,instant){
   const body=$('#aBody'),inn=$('#aIn');
   if(!instant&&inn.dataset.m===m)return;
-  authMode=m;$$('#aSeg button').forEach(b=>b.classList.toggle('on',b.dataset.m===m));slideSeg($('#aSeg'),instant);
+  authMode=m;$$('#aSeg button').forEach(b=>b.classList.toggle('on',b.dataset.m===(m==='forgot'?'login':m)));slideSeg($('#aSeg'),instant);if(instant)dropLayer('auth');else syncAuthLayer();
   const keep=$('#aMail')?$('#aMail').value:'';
   const put=()=>{inn.innerHTML=authHtml(m);inn.dataset.m=m;if(keep)$('#aMail').value=keep;syncSaved()};
   clearTimeout(swT);
@@ -753,10 +865,12 @@ function setMode(m,instant){
 function resetAuthForm(){const e=$('#aMail');if(e)e.value='';setBusy(false);setMode('login',true)}
 async function submitAuth(e){
   e.preventDefault();if(busy)return;
+  if(authMode==='forgot'){return submitForgot()}
   const mail=$('#aMail').value.trim().toLowerCase(),pw=$('#aPw').value,name=($('#aName')||{value:''}).value.trim(),su=authMode==='signup';
   ['#nameMsg','#mailMsg','#pwMsg','#aErr'].forEach(i=>msg(i,''));let ok=true;
   if(su&&name.length<2){msg('#nameMsg','Please enter your name.');ok=false}
   if(!isGmail(mail)){msg('#mailMsg',mailText(mail));ok=false}
+  else if(su&&!isGmailNew(mail)){msg('#mailMsg','Gmail names use 6-30 letters, numbers or dots.');ok=false}
   if(!pw||(su&&pw.length<6)){msg('#pwMsg',!pw?'Enter your password.':'Use at least 6 characters.');ok=false}
   if(!ok){shake();return}
   setBusy(true);
@@ -769,12 +883,34 @@ async function submitAuth(e){
       LS.set(USERS,JSON.stringify([...getUsers(),u]));
     }else{
       if(!u){await sleep(400);setBusy(false);showErr('No account for this Gmail.','Sign up instead',()=>setMode('signup'));shake();return}
-      if(await hashPw(pw,u.salt)!==u.hash){await sleep(400);setBusy(false);showErr('Incorrect password. Try again.');shake();return}
+      if(!(await verifyPw(u,pw))){await sleep(400);setBusy(false);showErr('Incorrect password. Try again.');shake();return}
+      if(u.hash.startsWith('f1:')){const salt=hex(crypto.getRandomValues(new Uint8Array(16)));u={...u,salt,hash:await hashPw(pw,salt)};LS.set(USERS,JSON.stringify(getUsers().map(x=>x.email===u.email?u:x)))}
     }
     LS.set(SESS,JSON.stringify({email:u.email,at:Date.now()}));
     await sleep(450);
-    switchView($('#auth'),$('#app'),()=>{startApp(u);setBusy(false);toast(su?'Account created! Welcome to SAVEO.':'Welcome back, '+u.name.split(' ')[0]+'!')});
+    switchView($('#auth'),$('#app'),()=>{startApp(u);setBusy(false);toast(su?'Account created! Welcome to SAVEO.':'Welcome back, '+u.name.split(' ')[0]+'!');setTimeout(()=>maybeOffer(true),1200)});
   }catch(err){setBusy(false);showErr('Could not save your account. Storage may be blocked in this browser.');shake()}
+}
+async function submitForgot(){
+  const mail=$('#aMail').value.trim().toLowerCase(),code=$('#aCode').value,pw=$('#aPw').value,pw2=$('#aPw2').value;
+  ['#mailMsg','#codeMsg','#pwMsg','#pw2Msg','#aErr'].forEach(i=>msg(i,''));let ok=true;
+  if(!isGmail(mail)){msg('#mailMsg',mailText(mail));ok=false}
+  if(!code.trim()){msg('#codeMsg','Enter your recovery code or account name.');ok=false}
+  if(pw.length<6){msg('#pwMsg','Use at least 6 characters.');ok=false}else if(pw!==pw2){msg('#pw2Msg','Passwords do not match.');ok=false}
+  if(!ok){shake();return}
+  if(Date.now()<fpLock){showErr('Too many attempts. Try again in a minute.');shake();return}
+  setBusy(true);
+  try{
+    const u=findUser(mail);
+    if(!u){await sleep(400);setBusy(false);showErr('No account for this Gmail.','Sign up instead',()=>setMode('signup'));shake();return}
+    const good=u.rec?(await hashRec(code,u.rec.salt))===u.rec.hash:u.name.trim().toLowerCase()===code.trim().toLowerCase();
+    if(!good){fpFail++;if(fpFail>=5){fpLock=Date.now()+60000;fpFail=0}await sleep(400);setBusy(false);showErr(u.rec?'That recovery code is not correct.':'That name does not match this account.');shake();return}
+    fpFail=0;
+    const salt=hex(crypto.getRandomValues(new Uint8Array(16))),nu={...u,salt,hash:await hashPw(pw,salt)};
+    LS.set(USERS,JSON.stringify(getUsers().map(x=>x.email===u.email?nu:x)));
+    await sleep(300);setBusy(false);toast('Password reset. Log in with your new password.');
+    setMode('login');setTimeout(()=>{const f=$('#aPw');if(f)f.focus()},650);
+  }catch(err){setBusy(false);showErr('Could not reset the password. Please try again.');shake()}
 }
 function switchView(from,to,before){
   from.classList.remove('on');from.classList.add('out');
@@ -783,7 +919,7 @@ function switchView(from,to,before){
 function startApp(u){
   user=u;KEY=DK+u.email;try{LS.set('saveo.last',u.email)}catch(e){}
   if(localStorage.getItem(KEY)===null){const lg=localStorage.getItem(LEGACY);if(lg&&!localStorage.getItem('saveo.legacyDone')){try{LS.set(KEY,lg);LS.set('saveo.legacyDone','1')}catch(e){}}}
-  S=merge(read());per='today';flt='all';qry='';sort='new';catf='all';qedit=false;gdraft={};tab='dash';bannerHidden=false;lastFire=Date.now();lastOff={};lastCol={};lastW={};lastUI='';lastDay=T();histLim=60;
+  dropLayer('auth');S=merge(read());per='today';flt='all';qry='';sort='new';catf='all';qedit=false;gdraft={};tab='dash';bannerHidden=false;lastFire=Date.now();lastOff={};lastCol={};lastW={};lastUI='';lastDay=T();histLim=60;
   const sc=loadUI();
   go();if(sc)requestAnimationFrame(()=>requestAnimationFrame(()=>TABS.forEach(t=>{const e=$('#t-'+t);if(e&&sc[t])e.scrollTop=sc[t]})));
   if(active)startLoops();if(isNative()&&S.set.notif)nPerm(true).then(schedule);
@@ -791,7 +927,7 @@ function startApp(u){
 function resetApp(){
   stopLoops();saveUI();clearTimeout(schT);
   if(isNative())LN().getPending().then(p=>LN().cancel({notifications:(p.notifications||[]).map(n=>({id:n.id}))})).catch(()=>{});
-  user=null;KEY='';S=merge(null);applyUI();$('#banner').className='glass';closeM();$('#pfWrap').classList.remove('on');$('#cuWrap').classList.remove('on');
+  rcPending=null;user=null;KEY='';S=merge(null);applyUI();$('#banner').className='glass';$$('.wrap.on').forEach(w=>w.classList.remove('on'));dropLayer('tab');schGen++;
 }
 function openLo(){if(!user)return;$('#loTx').textContent='Signed in as '+user.email+'. Your account stays saved, so you can log back in anytime.';$('#loWrap').classList.add('on')}
 const closeLo=()=>$('#loWrap').classList.remove('on');
@@ -804,9 +940,9 @@ async function doLogout(){
 $('#aBody').addEventListener('submit',submitAuth);
 $('#aBody').addEventListener('input',e=>{msg('#aErr','');const id=e.target.id;
   if(id==='aMail'){syncSaved();if($('#mailMsg').classList.contains('on')){const v=e.target.value.trim().toLowerCase();msg('#mailMsg',isGmail(v)?'':mailText(v))}}
-  else if(id==='aPw')msg('#pwMsg','');else if(id==='aName')msg('#nameMsg','')});
+  else if(id==='aPw'){msg('#pwMsg','');msg('#pw2Msg','')}else if(id==='aPw2')msg('#pw2Msg','');else if(id==='aCode')msg('#codeMsg','');else if(id==='aName')msg('#nameMsg','')});
 $('#aBody').addEventListener('focusout',e=>{if(e.target.id==='aMail'){const v=e.target.value.trim().toLowerCase();if(v&&!isGmail(v))msg('#mailMsg',mailText(v))}});
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.g){e.preventDefault();saveGoals();return}if(e.key==='Escape')$$('.wrap.on').forEach(w=>w.classList.remove('on'))});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='cfPw'){e.preventDefault();cfYes();return}if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.g){e.preventDefault();saveGoals();return}if(e.key==='Escape')$$('.wrap.on').forEach(w=>{if(!w.dataset.lock)w.classList.remove('on')})});
 window.addEventListener('storage',e=>{if(e.key===SESS&&!e.newValue&&user){closeLo();switchView($('#app'),$('#auth'),()=>{resetApp();resetAuthForm()})}});
 function boot(){
   applyPerf();
@@ -815,8 +951,100 @@ function boot(){
   document.documentElement.dataset.theme=localStorage.getItem('saveo.theme')||'dark';
   let sess=null;try{sess=JSON.parse(localStorage.getItem(SESS))}catch(e){}
   const u=sess&&findUser(sess.email);
-  if(u){startApp(u);$('#app').classList.add('enter','on');setTimeout(()=>$('#app').classList.remove('enter'),1400)}
+  if(u){startApp(u);setTimeout(()=>maybeOffer(false),2600);$('#app').classList.add('enter','on');setTimeout(()=>$('#app').classList.remove('enter'),1400)}
   else{if(sess)LS.del(SESS);setMode('login',true);$('#auth').classList.add('enter','on');setTimeout(()=>$('#auth').classList.remove('enter'),1400)}
+}
+
+/* ---------- back button, dialogs, recovery code, account deletion ---------- */
+let L=[],ignorePop=0,popN=0,popQ=0;
+function pushLayer(l){L.push(l);try{history.pushState({s:1,d:L.length},'')}catch(e){}}
+function popHist(n){popN+=n;if(popQ)return;popQ=1;Promise.resolve().then(()=>{const k=popN;popN=0;popQ=0;if(k>0){ignorePop++;try{history.go(-k)}catch(e){ignorePop--}}})}
+function dropLayer(kind){const n=L.length;L=L.filter(l=>l.kind!==kind);if(n!==L.length)popHist(n-L.length)}
+function syncTabLayer(){const has=L.some(l=>l.kind==='tab');if(tab!=='dash'&&!has)pushLayer({kind:'tab',close:()=>{tab='dash';go()}});else if(tab==='dash'&&has)dropLayer('tab')}
+function syncAuthLayer(){const has=L.some(l=>l.kind==='auth');if(authMode!=='login'&&!has)pushLayer({kind:'auth',close:()=>setMode('login')});else if(authMode==='login'&&has)dropLayer('auth')}
+window.addEventListener('popstate',e=>{
+  if(ignorePop>0){ignorePop--;return}
+  const nd=e.state&&e.state.s?e.state.d:0;
+  while(L.length>nd){const l=L.pop();try{l.close()}catch(x){}}
+});
+const wobs=new MutationObserver(rs=>{
+  for(const r of rs){
+    const el=r.target,on=el.classList.contains('on'),i=L.findIndex(l=>l.id===el.id);
+    if(on&&i<0)pushLayer({kind:'wrap',id:el.id,close:()=>el.classList.remove('on')});
+    else if(!on&&i>-1){L.splice(i,1);popHist(1)}
+    if(!on&&el.id==='cfWrap'&&cf){const c=cf;cf=null;c.res(false)}
+    if(!on&&el.id==='rcWrap'&&rcPending){rcPending=null;toast('Recovery code was not saved. Create one in Profile.',1)}
+  }
+});
+$$('.wrap').forEach(w=>wobs.observe(w,{attributes:true,attributeFilter:['class']}));
+{const A=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;
+ if(A&&A.addListener)A.addListener('backButton',()=>{if(L.length)history.back();else if(A.exitApp)A.exitApp()})}
+/* swipe a bottom sheet down to close it */
+function attachDrag(sh){
+  let y0=0,dy=0,t0=0,drag=false,on=false;
+  sh.addEventListener('touchstart',e=>{if(e.touches.length!==1)return;on=true;drag=false;dy=0;y0=e.touches[0].clientY;t0=e.timeStamp},{passive:true});
+  sh.addEventListener('touchmove',e=>{
+    if(!on)return;const d=e.touches[0].clientY-y0;
+    if(!drag){if(d>8&&sh.scrollTop<=0){drag=true;sh.style.transition='none'}else{if(d<-4||sh.scrollTop>0)on=false;return}}
+    dy=Math.max(0,d);sh.style.transform=`translate3d(0,${dy}px,0)`;if(e.cancelable)e.preventDefault();
+  },{passive:false});
+  const end=e=>{
+    if(!on)return;on=false;if(!drag)return;drag=false;
+    const shut=dy>110||dy/Math.max(1,e.timeStamp-t0)>.7;
+    sh.style.transition='';void sh.offsetWidth;sh.style.transform='';
+    if(shut)sh.closest('.wrap').classList.remove('on');
+  };
+  sh.addEventListener('touchend',end,{passive:true});sh.addEventListener('touchcancel',end,{passive:true});
+}
+$$('.wrap:not(.ctr) .sheet').forEach(attachDrag);
+/* in-app confirm dialog (window.confirm is ignored by many Android WebViews) */
+function ask(o){
+  return new Promise(res=>{
+    cf={res,o};$('#cfT').textContent=o.title;$('#cfTx').textContent=o.text;$('#cfYes .lbl').textContent=o.ok||'OK';
+    $('#cfYes').classList.toggle('dng',!!o.danger);$('#cfPwRow').style.display=o.password?'':'none';
+    const pw=$('#cfPw');pw.value='';pw.type='password';$('#cfWrap .eye').innerHTML=EYE;msg('#cfErr','');
+    $('#cfWrap').classList.add('on');if(o.password)setTimeout(()=>pw.focus(),400);
+  });
+}
+function cfClose(v){const c=cf;cf=null;$('#cfWrap').classList.remove('on');if(c)c.res(v)}
+async function cfYes(){
+  if(!cf||busy)return;const o=cf.o;
+  if(o.password){
+    const pw=$('#cfPw').value;if(!pw){msg('#cfErr','Enter your password.');shake($('#cfWrap .dlg'));return}
+    $('#cfYes').classList.add('load');const ok=await verifyPw(user,pw);await sleep(250);$('#cfYes').classList.remove('load');
+    if(!ok){msg('#cfErr','Incorrect password.');shake($('#cfWrap .dlg'));return}
+  }
+  cfClose(true);
+}
+/* recovery code */
+const RC_ALPHA='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+function genCode(){const a=new Uint8Array(24);let out='';while(out.length<12){crypto.getRandomValues(a);for(const x of a){if(x<224&&out.length<12)out+=RC_ALPHA[x%32]}}return out.match(/.{4}/g).join('-')}
+function offerRecovery(){if(!user||rcPending)return;rcPending=genCode();$('#rcCode').textContent=rcPending;$('#rcWrap').classList.add('on')}
+function maybeOffer(force){
+  if(!user||user.rec||rcPending||!active)return;
+  const t=+localStorage.getItem('saveo.rcAsk')||0;if(!force&&Date.now()-t<864e5)return;
+  LS.set('saveo.rcAsk',String(Date.now()));offerRecovery();
+}
+async function rcConfirm(){
+  if(!rcPending||!user)return;const b=$('#rcOk');b.classList.add('load');
+  const salt=hex(crypto.getRandomValues(new Uint8Array(16))),h=await hashRec(rcPending,salt);
+  setUser({...user,rec:{salt,hash:h,at:Date.now()}});rcPending=null;b.classList.remove('load');
+  $('#rcWrap').classList.remove('on');toast('Recovery code saved');
+}
+async function newRecovery(){
+  if(!user)return;
+  if(!(await ask({title:'Create recovery code',text:'Enter your password to continue.',ok:'Continue',password:true})))return;
+  offerRecovery();
+}
+/* delete account */
+async function deleteAccount(){
+  if(!user)return;const u=user;
+  if(!(await ask({title:'Delete account?',text:'This permanently erases '+u.email+' and all of its entries, goals and settings from this device. Other accounts are not affected.',ok:'Delete account',danger:true,password:true})))return;
+  frozen=true;
+  LS.set(USERS,JSON.stringify(getUsers().filter(x=>x.email!==u.email)));
+  LS.del(DK+u.email);LS.del('saveo.ui.'+u.email);LS.del(SESS);
+  if(localStorage.getItem('saveo.last')===u.email)LS.del('saveo.last');
+  switchView($('#app'),$('#auth'),()=>{resetApp();frozen=false;resetAuthForm();if(!getUsers().length)setMode('signup',true);toast('Account deleted')});
 }
 
 /* ---------- events ---------- */
@@ -827,7 +1055,7 @@ document.addEventListener('click',e=>{
   if(x=q('.ddb')){const d=x.closest('.dd'),o=d.classList.contains('open');$$('.dd.open').forEach(v=>v.classList.remove('open'));d.classList.toggle('open',!o);return}
   if(x=q('[data-eye]')){const i=$('#'+x.dataset.eye),sh=i.type==='password';i.type=sh?'text':'password';x.innerHTML=sh?EYEOFF:EYE;x.setAttribute('aria-label',sh?'Hide password':'Show password');return}
   if(x=q('#aSeg [data-m]')){if(authMode!==x.dataset.m)setMode(x.dataset.m);return}
-  if(t.classList&&t.classList.contains('wrap')){t.classList.remove('on');return}
+  if(t.classList&&t.classList.contains('wrap')){if(!t.dataset.lock)t.classList.remove('on');return}
   if(x=q('[data-close]')){$('#'+x.dataset.close).classList.remove('on');return}
   if(x=q('[data-pick]')){$('#aMail').value=x.dataset.pick;syncSaved();['#mailMsg','#pwMsg','#aErr'].forEach(i=>msg(i,''));$('#aPw').focus();return}
   if(x=q('[data-open]')){x.dataset.open==='pf'?openPf():openCu();return}
@@ -867,10 +1095,20 @@ document.addEventListener('click',e=>{
     if(S.cats[ty].length<=1){toast('Keep at least one category',1);return}
     const old=[...S.cats[ty]];S.cats[ty]=S.cats[ty].filter(c=>c!==n);persist();settings();toast('Category removed',0,{label:'Undo',fn:()=>{S.cats[ty]=old;persist();if(tab==='set')settings()}});return}
   if(q('#testAlert')){alertAll('SAVEO','Test alert — reminders are working.',true,true);toast('Test sent — check your notification bar');banner('Test alert: this is how reminders look.',1);setTimeout(()=>banner(),3500);return}
-  if(q('#exp')){exportJSON();return}
-  if(q('#cpy')){copyJSON();return}
-  if(q('#imp')){$('#file').value='';$('#file').click();return}
-  if(q('#rst')){if(confirm('Delete ALL entries and reset settings? This cannot be undone.')&&confirm('Really reset everything? Export a backup first if unsure.')){S=merge(null);persist();render();toast('All data reset')}return}
+  if(q('#exp')){exportData();return}
+  if(q('#cpy')){copyBackup();return}
+  if(q('#imp')){openBackup('import');return}
+  if(q('#rst')){resetData();return}
+  if(q('#delAcc')){deleteAccount();return}
+  if(q('#bkCopy')){copyText($('#bkTa').value).then(ok=>toast(ok?'Copied':'Select the text and copy it manually',!ok));return}
+  if(q('#bkFile')){$('#file').value='';$('#file').click();return}
+  if(q('#bkImp')){applyImport($('#bkTa').value);return}
+  if(q('#cfNo')){cfClose(false);return}
+  if(q('#cfYes')){cfYes();return}
+  if(q('#rcCopy')){copyText(rcPending||'').then(ok=>toast(ok?'Code copied':'Copy failed. Write it down instead.',!ok));return}
+  if(q('#rcOk')){rcConfirm();return}
+  if(q('#pfRcBtn')){newRecovery();return}
+  if(q('[data-forgot]')){setMode('forgot');return}
 });
 function onSet(el){
   const k=el.dataset&&el.dataset.k;if(!k)return;
